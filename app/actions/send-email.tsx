@@ -11,7 +11,7 @@ export async function sendEmail(formData: { name: string; email: string; message
       },
       body: JSON.stringify({
         from: "Portfolio Contact <onboarding@resend.dev>",
-        to: "bnandintsetseg74@gmail.com",
+        to: "sodoo53@gmail.com",
         subject: `New Contact Form Message from ${formData.name}`,
         html: `
           <h2>New Contact Form Submission</h2>

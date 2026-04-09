@@ -2,28 +2,27 @@ import type { Metadata } from "next"
 import ClientInfoPage from "./client-page"
 
 export const metadata: Metadata = {
-  title: "Contact & Connect | Nana Nandintsetseg",
+  title: "Contact & Connect | Baatar-Ochir Sodbilegt",
   description:
-    "Connect with Nana Nandintsetseg - Full-Stack Developer in Brisbane. Find me on LinkedIn, GitHub, Instagram, or download my resume. Open to new opportunities and collaborations.",
+    "Connect with Baatar-Ochir Sodbilegt - Software Engineer. Find me on GitHub, send me an email, or download my resume.",
   keywords: [
-    "contact Nana Nandintsetseg",
+    "contact Sodbilegt",
+    "software engineer contact",
     "full-stack developer contact",
-    "Brisbane developer contact",
-    "hire full-stack developer",
-    "Nana resume download",
+    "resume download",
     "developer social media",
   ],
   openGraph: {
-    title: "Connect with Nana Nandintsetseg | Full-Stack Developer",
+    title: "Connect with Baatar-Ochir Sodbilegt | Software Engineer",
     description:
-      "Get in touch, view my social profiles, or download my resume. Open for new opportunities in Brisbane and remote.",
+      "Get in touch, view social profiles, or download resume.",
     url: "https://nana-nandintsetseg.com/info",
     type: "profile",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Connect with Nana Nandintsetseg",
-    description: "Full-Stack Developer in Brisbane. Download my resume or connect on social media.",
+    title: "Connect with Baatar-Ochir Sodbilegt",
+    description: "Software Engineer. Download resume or connect on social media.",
   },
 }
 

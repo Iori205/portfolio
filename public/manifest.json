@@ -1,19 +1,19 @@
 {
-  "name": "Nana Nandintsetseg Portfolio",
-  "short_name": "Nana Portfolio",
-  "description": "Full-stack web developer and designer portfolio showcasing projects in Next.js, React, and digital marketing",
+  "name": "Baatar-Ochir Sodbilegt Portfolio",
+  "short_name": "Sodbilegt",
+  "description": "Software engineer portfolio showcasing full-stack and backend projects",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#8b5cf6",
   "icons": [
     {
-      "src": "/images/design-mode/552783218_811285438263437_1863407255956114468_n.jpg",
+      "src": "/images/design-mode/my_face.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/images/design-mode/552783218_811285438263437_1863407255956114468_n.jpg",
+      "src": "/images/design-mode/my_face.png",
       "sizes": "512x512",
       "type": "image/png"
     }

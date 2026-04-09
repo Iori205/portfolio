@@ -5,21 +5,21 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Skills & Knowledge | Nana Nandintsetseg",
+  title: "Skills & Knowledge | Baatar-Ochir Sodbilegt",
   description:
-    "Explore Nana Nandintsetseg's Skills and Interests",
+    "Explore Baatar-Ochir Sodbilegt's engineering skills and technical stack",
   keywords: [
-    "Nana Nandintsetseg skills",
-    "developer interests",
-    "chess player Brisbane",
-    "creative developer",
-    "photography hobby",
-    "anime manga enthusiast",
+    "Sodbilegt skills",
+    "software engineer skills",
+    "full-stack skills",
+    "React developer",
+    "Node.js developer",
+    "backend development",
   ],
   openGraph: {
-    title: "Skills & Knowledge | Nana Nandintsetseg",
+    title: "Skills & Knowledge | Baatar-Ochir Sodbilegt",
     description: "What Can I Do For You",
-    url: "https://nana-nandintsetseg.com/hobbies",
+    url: "https://nana-nandintsetseg.com/skills",
     type: "profile",
   },
 }
@@ -27,54 +27,53 @@ export const metadata: Metadata = {
 export default function Hobbies() {
   const hobbies = [
     {
-      title: "Full-Stack Development",
+      title: "Programming Languages",
       description:
-        "I build complete web applications from database to UI. I've shipped production systems with React, Next.js, Node.js, PostgreSQL, and Supabase including a live inventory POS app now used across 5 independent Brisbane stores. I write clean, maintainable TypeScript and JavaScript, and handle deployments via Docker and CI/CD pipelines.",
+        "JavaScript, TypeScript, HTML, CSS",
       link: "#",
     },
     {
-      title: " AI & Systems Integration",
+      title: "Frameworks & Libraries",
       description:
-        "I work with AI at an infrastructure level not just prompts. I've built a self-hosted AI assistant using Docker and MCP-trained agents integrated with REST APIs. I also use ML.NET for machine learning (see PropSight) and implement AI-assisted workflows for real client outcomes.",
-
+        "React, Next.js, Node.js, React Native, Express, Svelte, Shadcn UI, Daisy UI",
       link: "#",
     },
     {
-      title: "Data Analytics & Financial Modelling",
+      title: "Database / API",
       description:
-        "I turn raw data into decisions. I've built ASX portfolio dashboards with Python, yfinance, Sharpe ratio and VaR calculations, automated reporting pipelines, and CFA-style PDF exports. Tools: Power BI, pandas, Excel, Google Analytics.",
+        "NoSQL, PostgreSQL, MongoDB, NeonDB, Cloudflare D1, Mongoose, Prisma, Drizzle, REST API, GraphQL",
       icon: "",
       link: "#",
     },
     {
-      title: "Business Analysis & Digital Strategy",
+      title: "Tools",
       description:
-        "I don't just code I define the problem first. I conduct stakeholder discovery, SEO audits, competitor benchmarking, and deliver MoSCoW-prioritised roadmaps with acceptance criteria. Past results: 825% traffic growth, 55% lead conversion uplift.",
+        "Clerk, GitHub, Monorepo, Vercel, Netlify, Gemini AI, Hugging Face AI, Leaflet, Ably",
       link: "#",
     },
     {
-      title: "Social & Digital Marketing",
+      title: "Testing",
       description:
-        "I've run AI-assisted content strategies across Instagram, TikTok and Facebook that delivered 249% engagement growth and 24% audience growth within 30 days for a brand-new business launch.",
+        "Cypress (E2E), Jest (Unit)",
       link: "#",
     },
     {
-      title: "Design & Visual Communication",
+      title: "Languages",
       description:
-        "I design in Figma and have a background in photography and drawing (picked up professionally during my marketing work). I think visually which makes me better at building UIs people actually want to use.️",
+        "English (basic), Korean (Topik 3)",
       link: "#",
     },
     {
-      title: "Infrastructure & Home Lab",
+      title: "Core Profile",
       description:
-        "I run a home lab with Active Directory, Windows Server, and a 4TB Cloudflare-tunnelled Docker environment extending to AWS for cloud access. I test and break things on purpose so production systems don't.",
+        "Full-stack developer with 9+ project experiences building practical web and mobile solutions.",
       link: "#",
     },
     {
       title: "Fun facts about me",
       description:
-        "Hiking, Journaling, Reading, Movies, Kdrama, Anime, Manga, Manhwa, Gaming, Cooking",
-      icon: "❤️",
+        "Learning, coding, and continuously improving through real-world software projects.",
+      icon: "",
       link: "#",
     },
   ]

@@ -1,22 +1,26 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { GalaxyNavigation } from "@/components/galaxy-navigation"
-import { ProjectCard } from "@/components/project-card"
-import { HobbyCard } from "@/components/hobby-card"
-import { ArrowRight } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import { useLanguage } from "@/lib/language-context"
-import Image from "next/image"
-import { useState } from "react"
-import { sendEmail } from "@/app/actions/send-email"
+import type React from "react";
+import { GalaxyNavigation } from "@/components/galaxy-navigation";
+import { ProjectCard } from "@/components/project-card";
+import { HobbyCard } from "@/components/hobby-card";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/language-context";
+import Image from "next/image";
+import { useState } from "react";
+import { sendEmail } from "@/app/actions/send-email";
 
 export function HomePage() {
-  const { t } = useLanguage()
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { t } = useLanguage();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const featuredProjects = [
     {
@@ -35,18 +39,20 @@ export function HomePage() {
       tags: ["Strategy", "Social Media", "Analytics"],
       link: "https://www.google.com/search?q=88+Acai+Frozen+Yogurt&ie=UTF-8",
     },
-  ]
+  ];
 
   const featuredHobbies = [
     {
       title: "Chess",
-      description: "Sometimes it gives me stress and heart attack but i like it.",
+      description:
+        "Sometimes it gives me stress and heart attack but i like it.",
       icon: "♟️",
       link: "#",
     },
     {
       title: "Drawing",
-      description: "I won't draw you portraid drawing is not my thing almost every other thing is.",
+      description:
+        "I won't draw you portraid drawing is not my thing almost every other thing is.",
       icon: "🎨",
       link: "#",
     },
@@ -57,28 +63,32 @@ export function HomePage() {
       icon: "✨",
       link: "#",
     },
-  ]
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-      const result = await sendEmail(formData)
+      const result = await sendEmail(formData);
 
       if (result.success) {
-        alert("Thank you for your message! I'll get back to you soon.")
-        setFormData({ name: "", email: "", message: "" })
+        alert("Thank you for your message! I'll get back to you soon.");
+        setFormData({ name: "", email: "", message: "" });
       } else {
-        alert("Sorry, there was an error sending your message. Please try again or email me directly.")
+        alert(
+          "Sorry, there was an error sending your message. Please try again or email me directly.",
+        );
       }
     } catch (error) {
-      console.error("[v0] Form submission error:", error)
-      alert("Sorry, there was an error sending your message. Please try again or email me directly.")
+      console.error("[v0] Form submission error:", error);
+      alert(
+        "Sorry, there was an error sending your message. Please try again or email me directly.",
+      );
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -92,7 +102,8 @@ export function HomePage() {
             url: "https://nana-nandintsetseg.com",
             image:
               "https://nana-nandintsetseg.com/images/design-mode/552783218_811285438263437_1863407255956114468_n.jpg",
-            jobTitle: "I Build Things That Solve a Problem. For People Who Mean Business.",
+            jobTitle:
+              "I Build Things That Solve a Problem. For People Who Mean Business.",
             worksFor: {
               "@type": "EducationalOrganization",
               name: "Queensland University of Technology",
@@ -162,25 +173,19 @@ export function HomePage() {
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent bg-[length:200%_auto] animate-[gradient-shift_3s_ease_infinite]">
-                  Nana B, Nandintsetseg Bayarsaikhan
+                  Iori
                 </span>
               </h1>
-
+              s
               <div className="glass-card p-8 rounded-2xl backdrop-blur-xl border border-white/10 space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                   {t.home.aboutTitle}
                 </h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t.home.aboutPreview}</p>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                  {t.home.aboutPreview}
+                </p>
 
-                <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-                  
-
-                  
-
-                  
-
-                  
-                </div>
+                <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed"></div>
 
                 <div className="pt-4">
                   <Link href="/about">
@@ -209,7 +214,9 @@ export function HomePage() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text bg-gradient-to-r from-secondary to-accent leading-tight text-foreground">
               {t.home.featuredProjects}
             </h2>
-            <p className="text-lg md:text-xl leading-relaxed text-foreground">{t.home.projectsSubtitle}</p>
+            <p className="text-lg md:text-xl leading-relaxed text-foreground">
+              {t.home.projectsSubtitle}
+            </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
@@ -249,7 +256,9 @@ export function HomePage() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text bg-gradient-to-r from-accent to-accent/80 leading-tight text-foreground">
               {t.home.hobbiesTitle}
             </h2>
-            <p className="text-lg md:text-xl leading-relaxed text-foreground">{t.home.hobbiesSubtitle}</p>
+            <p className="text-lg md:text-xl leading-relaxed text-foreground">
+              {t.home.hobbiesSubtitle}
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {featuredHobbies.map((hobby, index) => (
@@ -299,7 +308,10 @@ export function HomePage() {
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <label htmlFor="name" className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">
+                  <label
+                    htmlFor="name"
+                    className="text-sm font-semibold text-foreground/90 uppercase tracking-wide"
+                  >
                     Name
                   </label>
                   <input
@@ -307,14 +319,19 @@ export function HomePage() {
                     id="name"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all backdrop-blur-sm hover:bg-white/10"
                     placeholder="Your name"
                   />
                 </div>
 
                 <div className="space-y-3">
-                  <label htmlFor="email" className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">
+                  <label
+                    htmlFor="email"
+                    className="text-sm font-semibold text-foreground/90 uppercase tracking-wide"
+                  >
                     Email
                   </label>
                   <input
@@ -322,7 +339,9 @@ export function HomePage() {
                     id="email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all backdrop-blur-sm hover:bg-white/10"
                     placeholder="your.email@example.com"
                   />
@@ -330,7 +349,10 @@ export function HomePage() {
               </div>
 
               <div className="space-y-3">
-                <label htmlFor="message" className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">
+                <label
+                  htmlFor="message"
+                  className="text-sm font-semibold text-foreground/90 uppercase tracking-wide"
+                >
                   Message
                 </label>
                 <textarea
@@ -338,7 +360,9 @@ export function HomePage() {
                   required
                   rows={6}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all resize-none backdrop-blur-sm hover:bg-white/10"
                   placeholder="Your message..."
                 />
@@ -356,5 +380,5 @@ export function HomePage() {
         </motion.section>
       </div>
     </div>
-  )
+  );
 }
