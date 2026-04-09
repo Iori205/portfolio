@@ -1,0 +1,329 @@
+"use client"
+
+import type React from "react"
+import { GalaxyNavigation } from "@/components/galaxy-navigation"
+import { ProjectCard } from "@/components/project-card"
+import { HobbyCard } from "@/components/hobby-card"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import Image from "next/image"
+import { useState } from "react"
+import { sendEmail } from "@/app/actions/send-email"
+
+const featuredProjects = [
+    {
+      title: "Retail POS & Inventory Web Application",
+      description:
+        "Used to keep inventory and cash record on pen and paper; so I built a mobile-first web application for retail tobacconist stores, featuring a role-based access control and a fully integrated point-of-sale, inventory and product management system. No manual work, no human errors. Commercially validated built on client request and sold to 5 independent stores.",
+      category: "IT",
+      tags: ["RBAC", "CRUD", "Real-Time Data", "Systems Analysis", "UAT", "Multi-User Architecture", "Access Control", "Data Query"],
+      link: "https://nananandintsetseg.my.canva.site/web-app-by-nana",
+    },
+    {
+      title: "PropSight - AI Property Valuation Tool",
+      description:
+        "A property price estimator built to combine real estate data with machine learning. Trained on NSW Valuer General data using ML.NET, PropSight estimates market value based on property features, compares suburbs, analyses condition and runs market simulations. Deployed on Google Cloud Run. Learning more to scale and improve. In progress",
+      category: "IT & Finance",
+      tags: ["ML.NET", "Data Analytics", "Next.js", "Financial Modelling", "AI", "Machine Learning", "Data Query", "In Progress"],
+      link: "https://propsight.nana-nandintsetseg.com/",
+    },
+]
+
+const featuredHobbies = [
+  {
+    title: "Chess",
+    description:
+      "Helps to keep my mind sharp but little competitive but i like playing rapid",
+    icon: "",
+    link: "https://www.chess.com/play/online",
+  },
+  {
+    title: "Learning",
+    description:
+      "Self-directed learning, curiosity, and experimentation with technology and creative projects.",
+    icon: "",
+    link: "#",
+  },
+  {
+    title: "Continuous Learning",
+    description:
+      "Currently: AI infrastructure, Analyst Programmer. The curiosity never stops.",
+    icon: "",
+    link: "#",
+  },
+]
+
+export default function Home() {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    try {
+      const result = await sendEmail(formData)
+      if (result.success) {
+        alert("Message sent! I'll get back to you within 24 hours.")
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        alert("Something went wrong. Please email me directly at bnandintsetseg74@gmail.com")
+      }
+    } catch (error) {
+      console.error("Form error:", error)
+      alert("Something went wrong. Please email me directly at bnandintsetseg74@gmail.com")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <div className="relative min-h-screen overflow-hidden">
+
+      {/* Background */}
+      <GalaxyNavigation />
+
+      {/* ── HERO ── */}
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-6 py-40 md:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-7xl mx-auto w-full"
+        >
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+            {/* Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex justify-center"
+            >
+              <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem]">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 backdrop-blur-sm" />
+                <Image
+                  src="/images/design-mode/my_face.jpg"
+                  alt="Nana Nandintsetseg - Technology Consultant & Developer"
+                  width={448}
+                  height={448}
+                  className="relative rounded-full border-4 border-white/30 shadow-2xl object-contain w-full h-full hover:scale-105 transition-transform duration-500"
+                  priority
+                />
+              </div>
+            </motion.div>
+
+            {/* Text */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="space-y-4"
+            >
+              <p className="text-sm font-medium tracking-widest text-foreground uppercase">
+                Computer Science + Finance | Nandintsetseg Bayarsaikhan
+              </p>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                <span className="bg-clip-text text bg-gradient-to-r from-primary  to-accent animate-[gradient-shift_3s_ease_infinite]">
+                  Nana B
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl font-semibold text-foreground/80">
+                I speak both languages
+              </p>
+              <p className="text-xl md:text-2xl font-semibold text-foreground/80">
+                Code and Business
+              </p>
+
+              <div className="glass-card p-8 rounded-2xl backdrop-blur-xl border border-white/10 space-y-5">
+                <p className="text-base md:text-lg text-foreground leading-relaxed">
+                  Final year Computer Science student with a Finance minor, implementing and improving local business systems and software.
+                </p>
+                <p className="text-sm md:text-base text-foreground leading-relaxed italic border-l-2 border-primary/40 pl-4">
+                  Want proof? Who am I?
+                </p>
+                <Link href="/about">
+                  <Button className="bg-primary/100 from-primary hover:from-primary/0 hover:to-secondary/90 group px-6 py-4 text-base rounded-xl ">
+                    More About Me
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+
+          </div>
+        </motion.div>
+      </section>
+
+      <div className="relative z-10 space-y-40 px-6 pb-40">
+
+        {/* ── FEATURED WORK ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto space-y-16 py-12"
+        >
+          <div className="text-center space-y-6 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text bg-gradient-to-r from-secondary to-accent leading-tight text-foreground">
+              Selected Work
+            </h2>
+            <p className="text-lg md:text-xl leading-relaxed text-foreground">
+              Real clients. Real outcomes. Real numbers.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {featuredProjects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <ProjectCard {...project} />
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center pt-6">
+            <Link href="/projects">
+              <Button
+                variant="outline"
+                className="border-secondary/50 hover:bg-secondary/10 hover:border-secondary group bg-transparent backdrop-blur-xl px-8 py-6 text-base rounded-xl"
+              >
+                View All Work
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
+        </motion.section>
+
+        {/* ── HOBBIES ── */}
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto space-y-16 py-12"
+        >
+          <div className="text-center space-y-6 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text bg-gradient-to-r from-accent to-accent/80 leading-tight text-foreground">
+              Beyond the Screen
+            </h2>
+            <p className="text-lg md:text-xl leading-relaxed text-foreground">
+              The things that keep me sharp and curious.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            {featuredHobbies.map((hobby, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <HobbyCard {...hobby} />
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center pt-6">
+            <Link href="/hobbies">
+              <Button
+                variant="outline"
+                className="border-accent/50 hover:bg-accent/10 hover:border-accent group bg-transparent backdrop-blur-xl px-8 py-6 text-base rounded-xl"
+              >
+                View My Skills
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
+        </motion.section>
+
+        {/* ── CONTACT ── */}
+        <motion.section
+          id="contact"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto space-y-16 py-12"
+        >
+          <div className="text-center space-y-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent leading-tight text-foreground">
+              Let's Work Together
+            </h2>
+            <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto text-foreground">
+              Got a business problem you think technology can solve? I respond within 24 hours and offer a free 30-minute discovery call to every new enquiry.
+            </p>
+          </div>
+
+          <div className="glass-card p-10 md:p-14 rounded-3xl backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <label htmlFor="name" className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all backdrop-blur-sm hover:bg-white/10"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label htmlFor="email" className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all backdrop-blur-sm hover:bg-white/10"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <label htmlFor="message" className="text-sm font-semibold text-foreground/90 uppercase tracking-wide">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all resize-none backdrop-blur-sm hover:bg-white/10"
+                  placeholder="Tell me about your project or role..."
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-primary via-secondary to-accent hover:from-primary/90 hover:via-secondary/90 hover:to-accent/90 text-white font-semibold py-5 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-secondary/25 text-base"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
+          </div>
+        </motion.section>
+
+      </div>
+    </div>
+  )
+}
