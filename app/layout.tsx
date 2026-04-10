@@ -9,9 +9,10 @@ import { Navbar } from "@/components/navbar"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" })
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nana-nandintsetseg.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Baatar-Ochir Sodbilegt | Software Engineer",
     template: "%s | Baatar-Ochir Sodbilegt Portfolio",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nana-nandintsetseg.com",
+    url: siteUrl,
     siteName: "Baatar-Ochir Sodbilegt Portfolio",
     title: "Baatar-Ochir Sodbilegt | Software Engineer",
     description:
@@ -62,6 +63,14 @@ export const metadata: Metadata = {
       "Software engineer specializing in full-stack web development and backend APIs.",
     images: ["/images/design-mode/my_face.png"],
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: ["/icon.svg", "/icon.png"],
+    apple: "/icon.png",
+  },
   robots: {
     index: true,
     follow: true,
@@ -73,11 +82,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "PHGX2ZcUz3uupzW14ZoXaYwAqNjmcE6sAFV1Cx5TyZk",
-  },
   alternates: {
-    canonical: "https://nana-nandintsetseg.com",
+    canonical: siteUrl,
   },
   generator: "v0.app",
 }

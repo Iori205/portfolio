@@ -4,8 +4,8 @@ Allow: /
 # Explicitly allow important pages
 Allow: /about
 Allow: /projects
-Allow: /hobbies
-Allow: /info
+Allow: /skills
+Allow: /contact
 
 # Sitemap location
-Sitemap: https://nana-nandintsetseg.com/sitemap.xml
+Sitemap: /sitemap.xml

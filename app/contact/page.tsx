@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import ClientInfoPage from "./client-page"
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+
 export const metadata: Metadata = {
   title: "Contact & Connect | Baatar-Ochir Sodbilegt",
   description:
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
     title: "Connect with Baatar-Ochir Sodbilegt | Software Engineer",
     description:
       "Get in touch, view social profiles, or download resume.",
-    url: "https://nana-nandintsetseg.com/info",
+    url: `${siteUrl}/contact`,
     type: "profile",
   },
   twitter: {

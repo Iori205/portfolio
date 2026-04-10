@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import Image from "next/image";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Menu, X } from "lucide-react"
+import { useState } from "react"
+import Image from "next/image"
 
 export function Navbar() {
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false)
 
   const links = [
     { href: "/", label: "Home" },
@@ -17,7 +17,7 @@ export function Navbar() {
     { href: "/projects", label: "Projects" },
     { href: "/skills", label: "My Skills" },
     { href: "/contact", label: "Contact" },
-  ];
+  ]
 
   return (
     <nav className="fixed top-0 z-50 w-full glass-card border-b border-blue-500/20 backdrop-blur-xl">
@@ -25,11 +25,11 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <Image
-              src=""
-              alt="Sodbilegt logo"
-              width={120}
-              height={40}
-              className="h-8 w-auto group-hover:scale-105 transition-transform"
+              src="/placeholder-logo.svg"
+              alt="Iori"
+              width={24}
+              height={24}
+              className="h-6 w-6 opacity-90 group-hover:scale-105 transition-transform"
             />
           </Link>
 
@@ -84,5 +84,5 @@ export function Navbar() {
         )}
       </div>
     </nav>
-  );
+  )
 }

@@ -4,6 +4,14 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 
+type ProjectItem = {
+  title: string
+  description: string
+  category: string
+  tags: string[]
+  link: string
+}
+
 export const metadata: Metadata = {
   title: "Projects - Full-Stack & Backend Engineering",
   description:
@@ -23,7 +31,7 @@ export const metadata: Metadata = {
 }
 
 export default function Projects() {
-  const itProjects = [
+  const itProjects: ProjectItem[] = [
     {
       title: "Unifind (Intern)",
       description:
@@ -41,13 +49,13 @@ export default function Projects() {
       link: "#",
     },
   ]
-  const financeProjects = []
+  const financeProjects: ProjectItem[] = []
 
-  const marketingProjects = []
+  const marketingProjects: ProjectItem[] = []
 
-  const designProjects = []
+  const designProjects: ProjectItem[] = []
 
-  const personalProjects = [
+  const personalProjects: ProjectItem[] = [
     {
       title: "ReferU (Intern)",
       description:

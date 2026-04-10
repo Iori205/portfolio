@@ -92,14 +92,14 @@ export default function Home() {
       <GalaxyNavigation />
 
       {/* ── HERO ── */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-6 py-40 md:py-20">
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-6 pt-28 pb-20 md:pt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="max-w-7xl mx-auto w-full"
         >
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-center">
             {/* Photo */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -107,14 +107,15 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex justify-center"
             >
-              <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem]">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 backdrop-blur-sm" />
+              <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[30rem] lg:h-[30rem]">
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-white/35 via-amber-100/25 to-blue-300/25 blur-sm" />
+                <div className="absolute inset-0 rounded-full bg-black/10" />
                 <Image
                   src="/images/design-mode/my_face.png"
                   alt="Baatar-Ochir Sodbilegt - Software Engineer"
-                  width={448}
-                  height={448}
-                  className="relative rounded-full border-4 border-white/30 shadow-2xl object-contain w-full h-full hover:scale-105 transition-transform duration-500"
+                  width={480}
+                  height={480}
+                  className="relative rounded-full border-[5px] border-white/90 shadow-lg object-cover w-full h-full hover:scale-[1.02] transition-transform duration-500"
                   priority
                 />
               </div>
@@ -127,32 +128,31 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-4"
             >
-              <p className="text-sm font-medium tracking-widest text-foreground uppercase">
-                Software Engineer | Full-Stack Development
-              </p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-                <span className="bg-clip-text text bg-gradient-to-r from-primary  to-accent animate-[gradient-shift_3s_ease_infinite]">
-                  Iori
-                </span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-foreground/90">
+                Iori
               </h1>
-              <p className="text-xl md:text-2xl font-semibold text-foreground/80">
-                I speak both languages
+              <p className="text-3xl md:text-4xl font-semibold text-foreground/80 leading-tight">
+                I build scalable web
+                <br />& mobile applications
               </p>
-              <p className="text-xl md:text-2xl font-semibold text-foreground/80">
-                Frontend and Backend
+              <p className="text-2xl md:text-3xl font-medium text-blue-300">
+                Frontend & Backend Developer
               </p>
+              {/* <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                <span className="bg-clip-text text bg-gradient-to-r from-primary  to-accent animate-[gradient-shift_3s_ease_infinite]">
+                  Nana B
+                </span>
+              </h1> */}
 
-              <div className="glass-card p-8 rounded-2xl backdrop-blur-xl border border-white/10 space-y-5">
+              <div className="glass-card p-6 md:p-8 rounded-2xl backdrop-blur-xl border border-blue-300/20 space-y-5 max-w-2xl">
                 <p className="text-base md:text-lg text-foreground leading-relaxed">
-                  Full-stack developer with 9+ project experiences building web
-                  and mobile applications with React and React Native.
+                  Full-stack developer with 9+ real-world projects.
+                  <br />I build React, Next.js, and Node.js applications focused
+                  on clean architecture and scalable solutions.
                 </p>
-                <p className="text-sm md:text-base text-foreground leading-relaxed italic border-l-2 border-primary/40 pl-4">
-                  Want proof? Who am I?
-                </p>
-                <Link href="/about">
-                  <Button className="bg-primary/100 from-primary hover:from-primary/0 hover:to-secondary/90 group px-6 py-4 text-base rounded-xl ">
-                    More About Me
+                <Link href="/projects">
+                  <Button className="bg-gradient-to-r from-secondary/50 to-accent/90 hover:from-secondary/80 hover:to-accent/70 text-primary-foreground border border-secondary/40 group backdrop-blur-xl px-6 py-4 text-base rounded-xl">
+                    View My Projects
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
@@ -196,10 +196,7 @@ export default function Home() {
 
           <div className="text-center pt-6">
             <Link href="/projects">
-              <Button
-                variant="outline"
-                className="border-secondary/50 hover:bg-secondary/10 hover:border-secondary group bg-transparent backdrop-blur-xl px-8 py-6 text-base rounded-xl"
-              >
+              <Button className="bg-gradient-to-r from-secondary/50 to-accent/90 hover:from-secondary/80 hover:to-accent/70 text-primary-foreground border border-secondary/40 group backdrop-blur-xl px-7.5 py-5.5 text-base rounded-xl">
                 View All Work
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -242,7 +239,7 @@ export default function Home() {
             <Link href="/skills">
               <Button
                 variant="outline"
-                className="border-accent/50 hover:bg-accent/10 hover:border-accent group bg-transparent backdrop-blur-xl px-8 py-6 text-base rounded-xl"
+                className="border-accent/50 hover:bg-accent/10 hover:border-accent group bg-transparent backdrop-blur-xl px-7.5 py-5.5 text-base rounded-xl"
               >
                 View My Skills
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

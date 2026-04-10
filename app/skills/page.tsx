@@ -4,6 +4,8 @@ import { GalaxyNavigation } from "@/components/galaxy-navigation"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+
 export const metadata: Metadata = {
   title: "Skills & Knowledge | Baatar-Ochir Sodbilegt",
   description:
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Skills & Knowledge | Baatar-Ochir Sodbilegt",
     description: "What Can I Do For You",
-    url: "https://nana-nandintsetseg.com/skills",
+    url: `${siteUrl}/skills`,
     type: "profile",
   },
 }
@@ -30,12 +32,14 @@ export default function Hobbies() {
       title: "Programming Languages",
       description:
         "JavaScript, TypeScript, HTML, CSS",
+      icon: "",
       link: "#",
     },
     {
       title: "Frameworks & Libraries",
       description:
         "React, Next.js, Node.js, React Native, Express, Svelte, Shadcn UI, Daisy UI",
+      icon: "",
       link: "#",
     },
     {
@@ -49,24 +53,28 @@ export default function Hobbies() {
       title: "Tools",
       description:
         "Clerk, GitHub, Monorepo, Vercel, Netlify, Gemini AI, Hugging Face AI, Leaflet, Ably",
+      icon: "",
       link: "#",
     },
     {
       title: "Testing",
       description:
         "Cypress (E2E), Jest (Unit)",
+      icon: "",
       link: "#",
     },
     {
       title: "Languages",
       description:
         "English (basic), Korean (Topik 3)",
+      icon: "",
       link: "#",
     },
     {
       title: "Core Profile",
       description:
         "Full-stack developer with 9+ project experiences building practical web and mobile solutions.",
+      icon: "",
       link: "#",
     },
     {
