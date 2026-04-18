@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
-import { useState } from "react"
-import Image from "next/image"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
 
 export function Navbar() {
-  const pathname = usePathname()
-  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   const links = [
     { href: "/", label: "Home" },
@@ -17,10 +17,10 @@ export function Navbar() {
     { href: "/projects", label: "Projects" },
     { href: "/skills", label: "My Skills" },
     { href: "/contact", label: "Contact" },
-  ]
+  ];
 
   return (
-    <nav className="fixed top-0 z-50 w-full glass-card border-b border-blue-500/20 backdrop-blur-xl">
+    <nav className="fixed top-4 left-4 right-4 z-50 glass-card border border-white/10 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
@@ -84,5 +84,5 @@ export function Navbar() {
         )}
       </div>
     </nav>
-  )
+  );
 }

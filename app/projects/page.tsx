@@ -1,16 +1,16 @@
-import { ProjectCard } from "@/components/project-card"
-import { GalaxyNavigation } from "@/components/galaxy-navigation"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
-import type { Metadata } from "next"
+import { ProjectCard } from "@/components/project-card";
+import { GalaxyNavigation } from "@/components/galaxy-navigation";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import type { Metadata } from "next";
 
 type ProjectItem = {
-  title: string
-  description: string
-  category: string
-  tags: string[]
-  link: string
-}
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  link: string;
+};
 
 export const metadata: Metadata = {
   title: "Projects - Full-Stack & Backend Engineering",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "Internship and engineering projects covering full-stack platforms, REST APIs, asynchronous processing, and database architecture.",
   },
-}
+};
 
 export default function Projects() {
   const itProjects: ProjectItem[] = [
@@ -38,7 +38,7 @@ export default function Projects() {
         "Built a full-stack B6 platform using React, Next.js, and Node.js. Implemented authentication and role-based access control while improving overall user experience.",
       category: "Full-Stack",
       tags: ["React", "Next.js", "Node.js", "RBAC", "UI/UX"],
-      link: "#",
+      link: "https://unifind-ruddy.vercel.app/",
     },
     {
       title: "UniExam (Intern)",
@@ -48,12 +48,12 @@ export default function Projects() {
       tags: ["REST API", "AWS SQS", "Upstash Redis", "Scalability"],
       link: "#",
     },
-  ]
-  const financeProjects: ProjectItem[] = []
+  ];
+  const financeProjects: ProjectItem[] = [];
 
-  const marketingProjects: ProjectItem[] = []
+  const marketingProjects: ProjectItem[] = [];
 
-  const designProjects: ProjectItem[] = []
+  const designProjects: ProjectItem[] = [];
 
   const personalProjects: ProjectItem[] = [
     {
@@ -64,7 +64,7 @@ export default function Projects() {
       tags: ["Node.js", "Express", "PostgreSQL", "Validation", "RBAC"],
       link: "#",
     },
-  ]
+  ];
 
   return (
     <div className="relative min-h-screen">
@@ -89,45 +89,51 @@ export default function Projects() {
           </div>
 
           <section className="space-y-8">
-            <h2 className="text-3xl font-bold text-primary">IT Projects</h2>
+            <h2 className="text-3xl font-bold text-primary">Web Development</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {itProjects.map((project, index) => (
                 <ProjectCard key={index} {...project} />
               ))}
             </div>
           </section>
-
-
+          {/* 
           <section className="space-y-8">
-            <h2 className="text-3xl font-bold text-foreground">Finance Projects</h2>
+            <h2 className="text-3xl font-bold text-foreground">
+              Finance Projects
+            </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {financeProjects.map((project, index) => (
                 <ProjectCard key={index} {...project} />
               ))}
             </div>
-          </section>
+          </section> */}
 
-
-          <section className="space-y-8">
-            <h2 className="text-3xl font-bold text-foreground">Marketing Projects</h2>
+          {/* <section className="space-y-8">
+            <h2 className="text-3xl font-bold text-foreground">
+              Marketing Projects
+            </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {marketingProjects.map((project, index) => (
                 <ProjectCard key={index} {...project} />
               ))}
             </div>
-          </section>
+          </section> */}
 
-          <section className="space-y-8">
-            <h2 className="text-3xl font-bold text-foreground">Design & Architecture</h2>
+          {/* <section className="space-y-8">
+            <h2 className="text-3xl font-bold text-foreground">
+              Design & Architecture
+            </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {designProjects.map((project, index) => (
                 <ProjectCard key={index} {...project} />
               ))}
             </div>
-          </section>
+          </section> */}
 
           <section className="space-y-8">
-            <h2 className="text-3xl font-bold text-foreground">Personal Projects</h2>
+            <h2 className="text-3xl font-bold text-foreground">
+              Mobile Development
+            </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {personalProjects.map((project, index) => (
                 <ProjectCard key={index} {...project} />
@@ -137,5 +143,5 @@ export default function Projects() {
         </div>
       </div>
     </div>
-  )
+  );
 }

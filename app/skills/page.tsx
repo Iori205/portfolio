@@ -1,10 +1,10 @@
-import type { Metadata } from "next"
-import { HobbyCard } from "@/components/hobby-card"
-import { GalaxyNavigation } from "@/components/galaxy-navigation"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
+import type { Metadata } from "next";
+import { HobbyCard } from "@/components/hobby-card";
+import { GalaxyNavigation } from "@/components/galaxy-navigation";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   title: "Skills & Knowledge | Baatar-Ochir Sodbilegt",
@@ -24,14 +24,13 @@ export const metadata: Metadata = {
     url: `${siteUrl}/skills`,
     type: "profile",
   },
-}
+};
 
 export default function Hobbies() {
   const hobbies = [
     {
       title: "Programming Languages",
-      description:
-        "JavaScript, TypeScript, HTML, CSS",
+      description: "JavaScript, TypeScript, HTML, CSS",
       icon: "",
       link: "#",
     },
@@ -52,21 +51,19 @@ export default function Hobbies() {
     {
       title: "Tools",
       description:
-        "Clerk, GitHub, Monorepo, Vercel, Netlify, Gemini AI, Hugging Face AI, Leaflet, Ably",
+        "Clerk, GitHub, Monorepo, Vercel, Netlify, Gemini AI, Hugging Face AI, Leaflet, Ably, Husky",
       icon: "",
       link: "#",
     },
     {
       title: "Testing",
-      description:
-        "Cypress (E2E), Jest (Unit)",
+      description: "Cypress (E2E), Jest (Unit)",
       icon: "",
       link: "#",
     },
     {
       title: "Languages",
-      description:
-        "English (basic), Korean (Topik 3)",
+      description: "English (basic), Korean (Topik 3)",
       icon: "",
       link: "#",
     },
@@ -84,7 +81,7 @@ export default function Hobbies() {
       icon: "",
       link: "#",
     },
-  ]
+  ];
 
   return (
     <div className="relative min-h-screen">
@@ -103,7 +100,9 @@ export default function Hobbies() {
             <h1 className="text-5xl md:text-6xl font-bold bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent text-foreground">
               Skills & Interests
             </h1>
-            <p className="text-xl text-foreground">What do I know? How can I contribute.</p>
+            <p className="text-xl text-foreground">
+              What do I know? How can I contribute.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -114,5 +113,5 @@ export default function Hobbies() {
         </div>
       </div>
     </div>
-  )
+  );
 }

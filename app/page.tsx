@@ -19,7 +19,7 @@ const featuredProjects = [
       "Built a full-stack B6 platform with React, Next.js, and Node.js. Implemented authentication and role-based access control, developed REST APIs, and delivered a responsive UI/UX across devices.",
     category: "Full-Stack",
     tags: ["React", "Next.js", "Node.js", "RBAC", "REST API"],
-    link: "#",
+    link: "https://unifind-ruddy.vercel.app/",
   },
   {
     title: "ReferU (Intern)",
@@ -33,25 +33,24 @@ const featuredProjects = [
 
 const featuredHobbies = [
   {
-    title: "Chess",
-    description:
-      "Helps to keep my mind sharp but little competitive but i like playing rapid",
+    title: "Programming Languages",
+    description: "JavaScript, TypeScript, HTML, CSS",
     icon: "",
-    link: "https://www.chess.com/play/online",
+    link: "/skills",
   },
   {
-    title: "Learning",
+    title: "Frameworks & Libraries",
     description:
-      "Self-directed learning, curiosity, and experimentation with technology and creative projects.",
+      "React, Next.js, Node.js, React Native, Express, Svelte, Shadcn UI, Daisy UI",
     icon: "",
-    link: "#",
+    link: "/skills",
   },
   {
-    title: "Continuous Learning",
+    title: "Database / API",
     description:
-      "Currently: AI infrastructure, Analyst Programmer. The curiosity never stops.",
+      "NoSQL, PostgreSQL, MongoDB, NeonDB, Cloudflare D1, Mongoose, Prisma, Drizzle, REST API, GraphQL",
     icon: "",
-    link: "#",
+    link: "/skills",
   },
 ];
 
@@ -107,7 +106,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex justify-center"
             >
-              <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[30rem] lg:h-[30rem]">
+              <div className="relative w-60 h-60 md:w-80 md:h-80 lg:w-[24rem] lg:h-[24rem]">
                 <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-white/35 via-amber-100/25 to-blue-300/25 blur-sm" />
                 <div className="absolute inset-0 rounded-full bg-black/10" />
                 <Image
@@ -150,9 +149,9 @@ export default function Home() {
                   <br />I build React, Next.js, and Node.js applications focused
                   on clean architecture and scalable solutions.
                 </p>
-                <Link href="/projects">
+                <Link href="/about">
                   <Button className="bg-gradient-to-r from-secondary/50 to-accent/90 hover:from-secondary/80 hover:to-accent/70 text-primary-foreground border border-secondary/40 group backdrop-blur-xl px-6 py-4 text-base rounded-xl">
-                    View My Projects
+                    More About Me
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
