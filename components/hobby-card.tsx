@@ -11,13 +11,13 @@ interface HobbyCardProps {
 export function HobbyCard({ title, description, icon, link }: HobbyCardProps) {
   return (
     <Link href={link}>
-      <Card className="glass-card group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] h-full border-border/50">
-        <CardHeader>
-          <div className="text-4xl mb-2">{icon}</div>
-          <CardTitle className="group-hover:text-primary transition-colors">{title}</CardTitle>
+      <Card className="void-card group h-full border-white/[0.08] bg-transparent py-6 transition-colors duration-200 hover:border-white/[0.18]">
+        <CardHeader className="gap-3 px-6">
+          <div className="mb-2 text-3xl">{icon}</div>
+          <CardTitle className="text-lg font-medium leading-tight tracking-[0.01em] text-zinc-100">{title}</CardTitle>
         </CardHeader>
-        <CardContent>
-          <CardDescription className="leading-relaxed">{description}</CardDescription>
+        <CardContent className="px-6">
+          <CardDescription className="void-copy text-sm">{description}</CardDescription>
         </CardContent>
       </Card>
     </Link>

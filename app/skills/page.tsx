@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { HobbyCard } from "@/components/hobby-card";
-import { GalaxyNavigation } from "@/components/galaxy-navigation";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -84,34 +83,23 @@ export default function Hobbies() {
   ];
 
   return (
-    <div className="relative min-h-screen">
-      <GalaxyNavigation />
-
-      <div className="relative z-10 py-20 px-4">
-        <Link
-          href="/"
-          className="fixed top-8 left-8 glass-card p-3 rounded-full hover:scale-110 transition-transform z-20"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </Link>
-
-        <div className="max-w-6xl mx-auto space-y-12">
-          <div className="space-y-4 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent text-foreground">
-              Skills & Interests
-            </h1>
-            <p className="text-xl text-foreground">
-              What do I know? How can I contribute.
-            </p>
+    <div className="min-h-screen pt-28 pb-14 md:pt-32">
+      <main className="void-shell space-y-12 md:space-y-14">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="void-eyebrow text-xs uppercase">Technical stack</p>
+            <h1 className="mt-4 void-heading text-[clamp(4rem,16vw,6.8rem)] font-medium uppercase text-zinc-100">Skills</h1>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {hobbies.map((hobby, index) => (
-              <HobbyCard key={index} {...hobby} />
-            ))}
-          </div>
+          <Link href="/about" className="void-link inline-flex items-center text-xs uppercase tracking-[0.2em]">
+            About <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         </div>
-      </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {hobbies.map((hobby, index) => (
+            <HobbyCard key={index} {...hobby} />
+          ))}
+        </div>
+      </main>
     </div>
   );
 }

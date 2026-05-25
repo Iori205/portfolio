@@ -1,7 +1,5 @@
-import { GalaxyNavigation } from "@/components/galaxy-navigation";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { AnimatedBackground } from "@/components/animated-background";
+import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -44,105 +42,40 @@ export default function About() {
   ];
 
   return (
-    <div className="relative min-h-screen">
-      <GalaxyNavigation />
-
-      <div className="absolute inset-0 gradient-bg" />
-      <AnimatedBackground />
-
-      <div className="relative z-10 py-20 px-4">
-        <Link
-          href="/"
-          className="fixed top-8 left-8 glass-card p-3 rounded-full hover:scale-110 transition-transform z-20"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </Link>
-
-        <div className="max-w-4xl mx-auto space-y-16">
-          <div className="space-y-4 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent text-foreground">
-              About Me
-            </h1>
-            <p className="text-xl text-balance text-foreground">
-              Get to know my background, education, and journey
-            </p>
+    <div className="min-h-screen pt-28 pb-14 md:pt-32">
+      <main className="void-shell space-y-12 md:space-y-14">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="void-eyebrow text-xs uppercase">My story</p>
+            <h1 className="mt-4 void-heading text-[clamp(4rem,16vw,6.8rem)] font-medium uppercase text-zinc-100">About Me</h1>
           </div>
-
-          <section className="space-y-6">
-            <h2 className="text-3xl font-bold text-primary">Background</h2>
-            <div className="glass-card rounded-2xl p-8 space-y-4 text-lg leading-relaxed">
-              <div>
-                Full-stack engineer with 9+ project experiences across web and
-                mobile application development.
-              </div>
-              <div>
-                Built production-oriented features using React, React Native,
-                Node.js, and PostgreSQL.
-              </div>
-              <div>
-                Focused on building maintainable systems and practical
-                user-first solutions.
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-6">
-            <h2 className="text-3xl font-bold text-foreground">Education</h2>
-            <div className="space-y-4">
-              <div className="glass-card rounded-2xl p-6 border-l-4 border-primary">
-                <h3 className="text-xl font-semibold">Software Engineer</h3>
-                <p className="text-muted-foreground">
-                  Pinecone Academy • 2025 - 2026
-                </p>
-                <p className="mt-2">
-                  Advanced software engineering studies focused on full-stack
-                  implementation, backend services, and scalable system design.
-                </p>
-              </div>
-              <div className="glass-card rounded-2xl p-6 border-l-4 border-secondary">
-                <h3 className="text-xl font-semibold">Language Preparation</h3>
-                <p className="text-muted-foreground">
-                  Joongbu University • 2022 - 2024
-                </p>
-                <p className="mt-2">
-                  Academic language preparation before engineering
-                  specialization.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-8">
-            <h2 className="text-3xl font-bold text-foreground">Timeline</h2>
-            <div className="relative">
-              <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent" />
-              <div className="space-y-12">
-                {timeline.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`relative flex items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
-                  >
-                    <div
-                      className={`flex-1 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}
-                    >
-                      <div className="glass-card rounded-2xl p-6 hover:scale-[1.02] transition-transform">
-                        <div className="text-sm font-semibold text-primary mb-2">
-                          {item.year}
-                        </div>
-                        <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-gradient-to-br from-primary to-secondary rounded-full -translate-x-[7px] md:-translate-x-1/2 border-4 border-black shadow-lg" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <Link href="/projects" className="void-link inline-flex items-center text-xs uppercase tracking-[0.2em]">
+            Projects <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         </div>
-      </div>
+
+        <section className="void-card p-7 md:p-8">
+          <h2 className="void-eyebrow text-xs uppercase">Background</h2>
+          <div className="void-copy mt-5 max-w-3xl space-y-3">
+            <p>Full-stack developer focused on building real-world systems used by actual users.</p>
+            <p>I&apos;ve built multiple production-style applications including dashboards, admin systems, and data-driven platforms.</p>
+            <p>My work centers around clean architecture, scalable backend systems, and solving practical problems.</p>
+          </div>
+        </section>
+
+        <section className="void-card p-7 md:p-8">
+          <h2 className="void-eyebrow text-xs uppercase">Timeline</h2>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {timeline.map((item) => (
+              <article key={`${item.year}-${item.title}`} className="rounded-md border border-white/[0.08] bg-black/20 p-4">
+                <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">{item.year}</p>
+                <h3 className="mt-3 text-xl font-medium tracking-[0.01em] text-zinc-100">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-400">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

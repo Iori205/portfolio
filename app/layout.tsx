@@ -1,15 +1,32 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter, JetBrains_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
-import { Suspense } from "react"
-import { Navbar } from "@/components/navbar"
+import type React from "react";
+import type { Metadata } from "next";
+import {
+  Geist_Mono,
+  IBM_Plex_Mono,
+  Inter,
+  Roboto_Condensed,
+} from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
+import { Suspense } from "react";
+import { Navbar } from "@/components/navbar";
 
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" })
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+const inter = Inter({ subsets: ["latin"], variable: "--font-family-inter" });
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-family-geist-mono",
+});
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-family-ibm-plex-mono",
+});
+const robotoCondensed = Roboto_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-family-roboto-condensed",
+});
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -86,22 +103,23 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   generator: "v0.app",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`font-sans ${inter.variable} ${jetbrainsMono.variable}`}>
-
-          <Navbar />
-          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+      <body
+        className={`font-sans ${inter.variable} ${geistMono.variable} ${ibmPlexMono.variable} ${robotoCondensed.variable}`}
+      >
+        <Navbar />
+        <Suspense fallback={<div></div>}>{children}</Suspense>
 
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

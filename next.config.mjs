@@ -1,13 +1,18 @@
 /** @type {import('next').NextConfig} */
+import { dirname } from "node:path"
+import { fileURLToPath } from "node:url"
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
     unoptimized: true,
+  },
+  turbopack: {
+    root: __dirname,
   },
 }
 

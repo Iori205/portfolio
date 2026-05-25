@@ -1,88 +1,97 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+const navLinks = [
+  { name: "Home", href: "#" },
+  { name: "Projects", href: "#projects" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
+];
 
 export function Navbar() {
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("Home");
 
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Me" },
-    { href: "/projects", label: "Projects" },
-    { href: "/skills", label: "My Skills" },
-    { href: "/contact", label: "Contact" },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["projects", "about", "contact"];
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(
+              section.charAt(0).toUpperCase() + section.slice(1),
+            );
+            return;
+          }
+        }
+      }
+
+      if (window.scrollY < 300) {
+        setActiveSection("Home");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-4 left-4 right-4 z-50 glass-card border border-white/10 backdrop-blur-xl rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.25)]">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <Image
-              src="/placeholder-logo.svg"
-              alt="Iori"
-              width={24}
-              height={24}
-              className="h-6 w-6 opacity-90 group-hover:scale-105 transition-transform"
-            />
-          </Link>
+    <motion.nav
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.3 }}
+      className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2"
+    >
+      <div className="relative flex items-center gap-1 border border-white/[0.08] bg-black/40 px-2 py-2 backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.45)]">
+        {/* VOID CORNERS */}
+        <div className="absolute left-0 top-0 h-3 w-3 border-l border-t border-white/20 " />
+        <div className="absolute right-0 top-0 h-3 w-3 border-r border-t border-white/20 " />
+        <div className="absolute bottom-0 left-0 h-3 w-3 border-b border-l border-white/20" />
+        <div className="absolute bottom-0 right-0 h-3 w-3 border-b border-r border-white/20" />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-all hover:text-primary relative group ${
-                  pathname === link.href ? "text-primary" : "text-foreground"
-                }`}
-              >
-                {link.label}
-                {pathname === link.href && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full" />
-                )}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-secondary to-accent rounded-full group-hover:w-full transition-all duration-300" />
-              </Link>
-            ))}
-          </div>
+        {navLinks.map((link) => {
+          const isActive = activeSection === link.name;
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-white hover:bg-primary/10"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
-        </div>
+          return (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={() => setActiveSection(link.name)}
+              className={`relative rounded-full px-5 py-2.5 text-[11px] uppercase tracking-[0.18em] transition-all duration-300 ${
+                isActive
+                  ? "bg-white text-black shadow-[0_0_25px_rgba(255,255,255,0.18)]"
+                  : "text-zinc-500 hover:text-zinc-100"
+              }`}
+            >
+              {isActive && (
+                <motion.div
+                  layoutId="active-pill"
+                  className="absolute inset-0 -z-10 rounded-full bg-white"
+                  transition={{
+                    type: "spring",
+                    stiffness: 280,
+                    damping: 24,
+                  }}
+                />
+              )}
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 space-y-2">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                  pathname === link.href
-                    ? "bg-gradient-to-r from-primary/20 to-secondary/20 text-primary border border-primary/30"
-                    : "text-foreground hover:bg-primary/10 hover:text-primary"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        )}
+              <span className="relative z-10">{link.name}</span>
+            </Link>
+          );
+        })}
       </div>
-    </nav>
+    </motion.nav>
   );
 }
